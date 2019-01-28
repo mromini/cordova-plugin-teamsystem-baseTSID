@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.teamsystem.TSID"
+        version="0.0.1">
+
+  <name>TSID</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/tsid.js" target="js/tsid.js"/>
+
+  <js-module src="www/tsid.js" name="tsid">
+    <clobbers target="tsid" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="TSID">
+        <param name="android-package" value="com.teamsystem.plugin.TSID"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/TSID.java" target-dir="src/com/teamsystem/plugin/"/>
+    <source-file src="src/android/TSIDCrypt.java" target-dir="src/com/teamsystem/plugin/"/>
+    <source-file src="src/android/TSIDBase64.java" target-dir="src/com/teamsystem/plugin/"/>
+  </platform>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/widget">
+      <feature name="TSID">
+        <param name="ios-package" value="TSID" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/TSID.h" target-dir="TSPlugin"/>
+    <source-file src="src/ios/TSID.m" target-dir="TSPlugin"/>
+  </platform>
+</plugin>
